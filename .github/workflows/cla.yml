@@ -21,7 +21,7 @@ jobs:
           path-to-document: 'https://github.com/chipkent/test-cla/blob/main/CLA.md'
           #remote-organization-name: chipkent
           #remote-repository-name: test-cla-signatures
-          branch: 'cla-signatures'
+          branch: 'cla-signatures-2'
           path-to-signatures: 'signatures/version1/cla.json'
 
           
