@@ -1,2 +1,2 @@
 # test-cla
-Test CLA system configuration
+This is a test CLA system configuration
