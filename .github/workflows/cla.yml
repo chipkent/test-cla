@@ -13,7 +13,7 @@
 #
 # A personal access token must be set up to allow this bot to commit.  To do this:
 # a) Create a personal access token with repo scope
-# b) Add the token to the repository's secrets as PERSONAL_ACCESS_TOKEN
+# b) Manually add the token to the repository's secrets as PERSONAL_ACCESS_TOKEN
 #
 # 3) allowlist
 #
@@ -32,19 +32,16 @@ jobs:
     steps:
       - name: "CLA Assistant"
         if: (github.event.comment.body == 'recheck' || github.event.comment.body == 'I have read the CLA Document and I hereby sign the CLA') || github.event_name == 'pull_request_target'
-        # Beta Release
         uses: cla-assistant/github-action@v2.1.3-beta
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # the below token should have repo scope and must be manually added by you in the repository's secret
           PERSONAL_ACCESS_TOKEN : ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         with:
-          path-to-document: 'https://github.com/chipkent/test-cla/blob/main/CLA.md'
-          #remote-organization-name: enter the remote organization name where the signatures should be stored (Default is storing the signatures in the same repository)
-          #remote-repository-name:  enter the  remote repository name where the signatures should be stored (Default is storing the signatures in the same repository)
-          branch: 'cla-signatures'
+          path-to-document: 'https://github.com/chipkent/test-cla-signatures/blob/main/CLA.md'
+          remote-organization-name: chipkent
+          remote-repository-name:  test-cla-signatures
+          branch: 'main'
           path-to-signatures: 'signatures/version1/cla.json'
-          allowlist: user1,bot*
-
+          #allowlist: user1,bot*
 
 
