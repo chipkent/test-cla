@@ -1,3 +1,24 @@
+#
+# Set up an action to monitor Contributor License Agreements (CLAs).
+# See: https://github.com/marketplace/actions/cla-assistant-lite
+#
+# 1) Signature branch creation
+# By default this action is configured to output *******
+# The branch containing the signatures must not be protected.  To create an empty branch named "cla-signatures" to contain the siguatures run:
+# git checkout --orphan cla-signatures
+# git rm -rf .
+# git commit --allow-empty -m "CLA signature branch creation"
+#
+# 2) PERSONAL_ACCESS_TOKEN
+#
+# A personal access token must be set up to allow this bot to commit.  To do this:
+# a) Create a personal access token with repo scope
+# b) Add the token to the repository's secrets as PERSONAL_ACCESS_TOKEN
+#
+# 3) allowlist
+#
+# If a GitHub username is included in the allowlist, they will not be required to sign the CLA.  This is useful for allowing bots to contribute without a CLA.
+
 name: "CLA Assistant"
 on:
   issue_comment:
@@ -19,35 +40,11 @@ jobs:
           PERSONAL_ACCESS_TOKEN : ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         with:
           path-to-document: 'https://github.com/chipkent/test-cla/blob/main/CLA.md'
-          #remote-organization-name: chipkent
-          #remote-repository-name: test-cla-signatures
-          branch: 'cla-signatures-2'
-          path-to-signatures: 'signatures/version1/cla.json'
-
-          
-          # branch should not be protected
-          #branch: 'main'
-          #branch: 'cla-signatures'
-          allowlist: user1,bot*
-
-         #below are the optional inputs - If the optional inputs are not given, then default values will be taken
           #remote-organization-name: enter the remote organization name where the signatures should be stored (Default is storing the signatures in the same repository)
           #remote-repository-name:  enter the  remote repository name where the signatures should be stored (Default is storing the signatures in the same repository)
+          branch: 'cla-signatures'
+          path-to-signatures: 'signatures/version1/cla.json'
+          allowlist: user1,bot*
 
 
-#create-file-commit-message: 'For example: Creating file for storing CLA Signatures'
-
-
-#signed-commit-message: 'For example: $contributorName has signed the CLA in #$pullRequestNo'
-
-
-#custom-notsigned-prcomment: 'pull request comment with Introductory message to ask new contributors to sign'
-
-#custom-pr-sign-comment: 'The signature to be committed in order to sign the CLA'
-
-#custom-allsigned-prcomment: 'pull request comment when all contributors has signed, defaults to **CLA Assistant Lite bot** All Contributors have signed the CLA.'
-
-#lock-pullrequest-aftermerge: false - if you don't want this bot to automatically lock the pull request after merging (default - true)
-
-#use-dco-flag: true - If you are using DCO instead of CLA
 
