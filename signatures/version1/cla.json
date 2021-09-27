@@ -1,3 +1,20 @@
 {
-   "signedContributors": []
+  "signedContributors": [
+    {
+      "name": "chipkent",
+      "id": 5250374,
+      "comment_id": 928106406,
+      "created_at": "2021-09-27T17:44:52Z",
+      "repoId": 410968156,
+      "pullRequestNo": 1
+    },
+    {
+      "name": "chipkent",
+      "id": 5250374,
+      "comment_id": 928151630,
+      "created_at": "2021-09-27T18:14:56Z",
+      "repoId": 410968156,
+      "pullRequestNo": 1
+    }
+  ]
 }
