@@ -19,8 +19,9 @@ jobs:
           PERSONAL_ACCESS_TOKEN : ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         with:
           path-to-document: 'https://github.com/chipkent/test-cla/blob/main/CLA.md'
+	  remote-repository-name test-cla-signatures
           path-to-signatures: 'signatures/version1/cla.json'
-          remote-repository-name test-cla-signatures
+
           
           # branch should not be protected
           branch: 'main'
